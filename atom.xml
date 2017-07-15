@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Richardxu1983</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-07-15T12:40:51.702Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Richardxu1983</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo+github</title>
+    <link href="http://yoursite.com/2017/07/15/blog/"/>
+    <id>http://yoursite.com/2017/07/15/blog/</id>
+    <published>2017-07-15T12:35:59.000Z</published>
+    <updated>2017-07-15T12:40:51.702Z</updated>
+    
+    <content type="html"><![CDATA[<p>经过一番纠结，最终决定好好把github主页给搞起来。</p>
+<p>毕竟这是最大的编程、分享（同性）网站不是么。</p>
+<p>权衡再三，决定使用hexo生成静态博客页面，看看效果如何吧。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;经过一番纠结，最终决定好好把github主页给搞起来。&lt;/p&gt;
+&lt;p&gt;毕竟这是最大的编程、分享（同性）网站不是么。&lt;/p&gt;
+&lt;p&gt;权衡再三，决定使用hexo生成静态博客页面，看看效果如何吧。&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="essay" scheme="http://yoursite.com/categories/essay/"/>
+    
+    
+  </entry>
+  
+</feed>
