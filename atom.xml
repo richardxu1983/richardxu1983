@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-15T12:40:51.702Z</updated>
+  <updated>2017-07-15T13:03:58.976Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/07/15/blog/"/>
     <id>http://yoursite.com/2017/07/15/blog/</id>
     <published>2017-07-15T12:35:59.000Z</published>
-    <updated>2017-07-15T12:40:51.702Z</updated>
+    <updated>2017-07-15T13:03:58.976Z</updated>
     
     <content type="html"><![CDATA[<p>经过一番纠结，最终决定好好把github主页给搞起来。</p>
 <p>毕竟这是最大的编程、分享（同性）网站不是么。</p>
@@ -36,7 +36,7 @@
     
     </summary>
     
-      <category term="essay" scheme="http://yoursite.com/categories/essay/"/>
+      <category term="story" scheme="http://yoursite.com/categories/story/"/>
     
     
   </entry>
