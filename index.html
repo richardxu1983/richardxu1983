@@ -356,16 +356,31 @@
       
         
           
-          如果开发的是复古像素风格的2D游戏，那么最好要进行以下设置：
-关闭各向异性和抗锯齿Edit
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/16/blog-2017-7-16-code/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>如果开发的是复古像素风格的2D游戏，那么最好要进行以下设置：</p>
+<h3 id="关闭各向异性和抗锯齿"><a href="#关闭各向异性和抗锯齿" class="headerlink" title="关闭各向异性和抗锯齿"></a>关闭各向异性和抗锯齿</h3><p>Edit-&gt;Project Settings-&gt;Quality:</p>
+<ul>
+<li>关闭Anisotropic textures</li>
+<li>关闭Anti Aliasing</li>
+</ul>
+<h3 id="图片的Filter-Mode"><a href="#图片的Filter-Mode" class="headerlink" title="图片的Filter Mode"></a>图片的Filter Mode</h3><ul>
+<li>Point</li>
+</ul>
+<h3 id="Pixel-snap"><a href="#Pixel-snap" class="headerlink" title="Pixel snap"></a>Pixel snap</h3><ul>
+<li>通过创建一个使用Sprite/Default着色器的自定义材质，并附加到SpriteRenderer，勾选该着色器的Pixel snap属性。</li>
+</ul>
+<h3 id="相机距离"><a href="#相机距离" class="headerlink" title="相机距离"></a>相机距离</h3><ul>
+<li>每个世界空间的单元的像素数 = 纵向分辨率/ ( 相机距离（orthograpgic的size） * 2 )<br>这个像素数必须是PPU（pixel per unit）的整数倍</li>
+</ul>
+<p><code>举例：768 / ( size * 2 ) = x * PPU，x必须为整数
+size = 768(/x*PPU*2)
+if PPU=16
+size = 24/x，如果x为整数，那么size=24,12,8,6....</code></p>
+<h3 id="关闭vSync"><a href="#关闭vSync" class="headerlink" title="关闭vSync"></a>关闭vSync</h3><ul>
+<li>QualitySettings.vSyncCount = 0;</li>
+<li>Application.targetFrameRate = 60;</li>
+</ul>
+
+          
         
       
     </div>
@@ -497,16 +512,9 @@
       
         
           
-          经过一番纠结，最终决定好好把github主页给搞起来。
-毕竟这是最大的编程、分享（同性）网
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/15/blog/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>经过一番纠结，最终决定好好把github主页给搞起来。<br>毕竟这是最大的编程、分享（同性）网站不是么。<br>权衡再三，决定使用hexo生成静态博客页面，看看效果如何吧。</p>
+
+          
         
       
     </div>

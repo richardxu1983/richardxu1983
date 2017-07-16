@@ -48,9 +48,7 @@ size = 24/x，如果x为整数，那么size=24,12,8,6....</code></p>
     <entry>
       <title><![CDATA[hexo+github]]></title>
       <url>/2017/07/15/blog/</url>
-      <content type="html"><![CDATA[<p>经过一番纠结，最终决定好好把github主页给搞起来。</p>
-<p>毕竟这是最大的编程、分享（同性）网站不是么。</p>
-<p>权衡再三，决定使用hexo生成静态博客页面，看看效果如何吧。</p>
+      <content type="html"><![CDATA[<p>经过一番纠结，最终决定好好把github主页给搞起来。<br>毕竟这是最大的编程、分享（同性）网站不是么。<br>权衡再三，决定使用hexo生成静态博客页面，看看效果如何吧。</p>
 ]]></content>
       
         <categories>
