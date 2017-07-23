@@ -3,6 +3,23 @@
   
     
     <entry>
+      <title><![CDATA[即将抱娃的随想]]></title>
+      <url>/2017/07/23/20170723/</url>
+      <content type="html"><![CDATA[<p>还有2周娃就要出生了<br>心中有不少忐忑与担心<br>但有更多的期待与希望</p>
+<p>我未来的孩儿啊<br>爸爸有好多好多的事情要告诉你</p>
+<p>但爸爸没法一下全部告诉你<br>就让岁月慢慢教会爸爸怎样作爸爸<br>让爸爸慢慢教会你如何学习生活</p>
+]]></content>
+      
+        <categories>
+            
+            <category> story </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Unity2d的几个注意点]]></title>
       <url>/2017/07/16/blog-2017-7-16-code/</url>
       <content type="html"><![CDATA[<p>如果开发的是复古像素风格的2D游戏，那么最好要进行以下设置：</p>

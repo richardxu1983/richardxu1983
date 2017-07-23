@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-16T00:16:39.189Z</updated>
+  <updated>2017-07-23T13:03:29.735Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>即将抱娃的随想</title>
+    <link href="http://yoursite.com/2017/07/23/20170723/"/>
+    <id>http://yoursite.com/2017/07/23/20170723/</id>
+    <published>2017-07-23T12:58:48.000Z</published>
+    <updated>2017-07-23T13:03:29.735Z</updated>
+    
+    <content type="html"><![CDATA[<p>还有2周娃就要出生了<br>心中有不少忐忑与担心<br>但有更多的期待与希望</p>
+<p>我未来的孩儿啊<br>爸爸有好多好多的事情要告诉你</p>
+<p>但爸爸没法一下全部告诉你<br>就让岁月慢慢教会爸爸怎样作爸爸<br>让爸爸慢慢教会你如何学习生活</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;还有2周娃就要出生了&lt;br&gt;心中有不少忐忑与担心&lt;br&gt;但有更多的期待与希望&lt;/p&gt;
+&lt;p&gt;我未来的孩儿啊&lt;br&gt;爸爸有好多好多的事情要告诉你&lt;/p&gt;
+&lt;p&gt;但爸爸没法一下全部告诉你&lt;br&gt;就让岁月慢慢教会爸爸怎样作爸爸&lt;br&gt;让爸爸慢慢教会你如何学习生活&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="story" scheme="http://yoursite.com/categories/story/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Unity2d的几个注意点</title>
