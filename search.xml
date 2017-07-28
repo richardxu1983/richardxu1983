@@ -3,6 +3,34 @@
   
     
     <entry>
+      <title><![CDATA[UGUI的图片打包]]></title>
+      <url>/2017/07/28/20170728-code/</url>
+      <content type="html"><![CDATA[<p>本文主要参考了<a href="http://www.xuanyusong.com/archives/3304" target="_blank" rel="external">UGUI研究院之全面理解图集与使用（三）</a>的讲解，感谢雨松老师</p>
+<h3 id="为什么要打包？"><a href="#为什么要打包？" class="headerlink" title="为什么要打包？"></a>为什么要打包？</h3><p>图片打包之后可以降低draw call</p>
+<h3 id="如何打开UGUI的图片打包？"><a href="#如何打开UGUI的图片打包？" class="headerlink" title="如何打开UGUI的图片打包？"></a>如何打开UGUI的图片打包？</h3><p>UGUI的图片打包( sprite packer )默认是关闭的，Unity在默认的情况下会自动判断项目内的图片数量多少，当过多的时候会自动打包，其目的是为了模糊图片打包这件事，让开发者不要关注图片打包而专注于设计</p>
+<p>我们可以手动打开：<br>Editor-&gt;Project Settings 选择 sprite packer 下的 Mode 的 <strong>Always Enabled</strong></p>
+<h3 id="如何使用UGUI的图片打包？"><a href="#如何使用UGUI的图片打包？" class="headerlink" title="如何使用UGUI的图片打包？"></a>如何使用UGUI的图片打包？</h3><p>首先，将要打包成为一个图集里的图片的 packing tag 填写为同一个字符串<br>然后点击Windows-&gt;Sprite Packer，在打包图集的窗口里，点击Packer，就可以看到打包的结果了<br><strong>注意你的图片不能放在Resources文件夹下面，Resources文件夹下的资源将不会被打入图集</strong></p>
+<h3 id="打包了的图集去了哪里？"><a href="#打包了的图集去了哪里？" class="headerlink" title="打包了的图集去了哪里？"></a>打包了的图集去了哪里？</h3><p>它保存在和Assets文件夹同级的目录，Libary/AtlasCache里面。你不用管它，也不要删除它，就算你删除了也没用因为只要你打包，它就会生成并且会打到包中</p>
+<h3 id="如何动态创建图集里的图片？"><a href="#如何动态创建图集里的图片？" class="headerlink" title="如何动态创建图集里的图片？"></a>如何动态创建图集里的图片？</h3><p>思路：把所有小图关联在prefab上，拷贝在Resources文件夹下，这样运行时就能用Resources.load<br>首先：在菜单里做一个工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">[MenuItem (&quot;MyMenu/AtlasMaker&quot;)]</div><div class="line">static private void MakeAtlas()</div><div class="line">&#123;</div><div class="line">	string spriteDir = Application.dataPath +&quot;/Resources/Sprite&quot;;</div><div class="line">	</div><div class="line">	if(!Directory.Exists(spriteDir))&#123;</div><div class="line">		Directory.CreateDirectory(spriteDir);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	DirectoryInfo rootDirInfo = new DirectoryInfo (Application.dataPath +&quot;/Atlas&quot;);</div><div class="line">	foreach (DirectoryInfo dirInfo in rootDirInfo.GetDirectories()) &#123;</div><div class="line">		foreach (FileInfo pngFile in dirInfo.GetFiles(&quot;*.png&quot;,SearchOption.AllDirectories)) &#123;</div><div class="line">			string allPath = pngFile.FullName;</div><div class="line">			string assetPath = allPath.Substring(allPath.IndexOf(&quot;Assets&quot;));</div><div class="line">			Sprite sprite = Resources.LoadAssetAtPath&lt;Sprite&gt;(assetPath);</div><div class="line">			GameObject go = new GameObject(sprite.name);</div><div class="line">			go.AddComponent&lt;SpriteRenderer&gt;().sprite = sprite;</div><div class="line">			 allPath = spriteDir+&quot;/&quot;+sprite.name+&quot;.prefab&quot;;</div><div class="line">			string prefabPath = allPath.Substring(allPath.IndexOf(&quot;Assets&quot;));</div><div class="line">			PrefabUtility.CreatePrefab(prefabPath,go);</div><div class="line">			GameObject.DestroyImmediate(go);</div><div class="line">		&#125;</div><div class="line">	&#125;	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后，在Resources目录下创建Sprite目录，并且在Assets目录下创建Atlas<br>把需要打包到图集里的图片放到Atlas里，点工具按钮，然后在Resources/Sprite里就会生成prefab了<br>如何使用呢？<br>这样就行了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">private Sprite loadSprite(string spriteName)&#123;</div><div class="line">	return Resources.Load&lt;GameObject&gt;(&quot;Sprite/&quot; + spriteName).GetComponent&lt;SpriteRenderer&gt;().sprite;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> code </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> unity </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[即将抱娃的随想]]></title>
       <url>/2017/07/23/20170723/</url>
       <content type="html"><![CDATA[<p>还有2周娃就要出生了<br>心中有不少忐忑与担心<br>但有更多的期待与希望</p>
