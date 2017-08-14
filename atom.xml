@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://www.richardxu1983.com/"/>
   <updated>2017-07-28T13:06:14.715Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://www.richardxu1983.com/</id>
   
   <author>
     <name>Richardxu1983</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>UGUI的图片打包</title>
-    <link href="http://yoursite.com/2017/07/28/20170728-code/"/>
-    <id>http://yoursite.com/2017/07/28/20170728-code/</id>
+    <link href="http://www.richardxu1983.com/2017/07/28/20170728-code/"/>
+    <id>http://www.richardxu1983.com/2017/07/28/20170728-code/</id>
     <published>2017-07-28T12:48:30.000Z</published>
     <updated>2017-07-28T13:06:14.715Z</updated>
     
@@ -39,17 +39,17 @@
     
     </summary>
     
-      <category term="code" scheme="http://yoursite.com/categories/code/"/>
+      <category term="code" scheme="http://www.richardxu1983.com/categories/code/"/>
     
     
-      <category term="unity" scheme="http://yoursite.com/tags/unity/"/>
+      <category term="unity" scheme="http://www.richardxu1983.com/tags/unity/"/>
     
   </entry>
   
   <entry>
     <title>即将抱娃的随想</title>
-    <link href="http://yoursite.com/2017/07/23/20170723/"/>
-    <id>http://yoursite.com/2017/07/23/20170723/</id>
+    <link href="http://www.richardxu1983.com/2017/07/23/20170723/"/>
+    <id>http://www.richardxu1983.com/2017/07/23/20170723/</id>
     <published>2017-07-23T12:58:48.000Z</published>
     <updated>2017-07-23T13:03:29.735Z</updated>
     
@@ -67,15 +67,15 @@
     
     </summary>
     
-      <category term="story" scheme="http://yoursite.com/categories/story/"/>
+      <category term="story" scheme="http://www.richardxu1983.com/categories/story/"/>
     
     
   </entry>
   
   <entry>
     <title>Unity2d的几个注意点</title>
-    <link href="http://yoursite.com/2017/07/16/blog-2017-7-16-code/"/>
-    <id>http://yoursite.com/2017/07/16/blog-2017-7-16-code/</id>
+    <link href="http://www.richardxu1983.com/2017/07/16/blog-2017-7-16-code/"/>
+    <id>http://www.richardxu1983.com/2017/07/16/blog-2017-7-16-code/</id>
     <published>2017-07-16T00:07:59.000Z</published>
     <updated>2017-07-16T00:16:39.189Z</updated>
     
@@ -111,17 +111,17 @@ size = 24/x，如果x为整数，那么size=24,12,8,6....</code></p>
     
     </summary>
     
-      <category term="code" scheme="http://yoursite.com/categories/code/"/>
+      <category term="code" scheme="http://www.richardxu1983.com/categories/code/"/>
     
     
-      <category term="unity" scheme="http://yoursite.com/tags/unity/"/>
+      <category term="unity" scheme="http://www.richardxu1983.com/tags/unity/"/>
     
   </entry>
   
   <entry>
     <title>hexo+github</title>
-    <link href="http://yoursite.com/2017/07/15/blog/"/>
-    <id>http://yoursite.com/2017/07/15/blog/</id>
+    <link href="http://www.richardxu1983.com/2017/07/15/blog/"/>
+    <id>http://www.richardxu1983.com/2017/07/15/blog/</id>
     <published>2017-07-15T12:35:59.000Z</published>
     <updated>2017-07-16T04:47:55.714Z</updated>
     
@@ -135,7 +135,7 @@ size = 24/x，如果x为整数，那么size=24,12,8,6....</code></p>
     
     </summary>
     
-      <category term="story" scheme="http://yoursite.com/categories/story/"/>
+      <category term="story" scheme="http://www.richardxu1983.com/categories/story/"/>
     
     
   </entry>
