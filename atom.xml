@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.richardxu1983.com/"/>
-  <updated>2017-07-28T13:06:14.715Z</updated>
+  <updated>2018-06-06T13:09:09.748Z</updated>
   <id>http://www.richardxu1983.com/</id>
   
   <author>
@@ -16,11 +16,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>2018年已经过了一半</title>
+    <link href="http://www.richardxu1983.com/2018/06/06/2018-06-06-somethoughts/"/>
+    <id>http://www.richardxu1983.com/2018/06/06/2018-06-06-somethoughts/</id>
+    <published>2018-06-06T13:04:53.000Z</published>
+    <updated>2018-06-06T13:09:09.748Z</updated>
+    
+    <content type="html"><![CDATA[<p>转眼孩子已经9个多月了，进银行工作也快一年，重拾github和blog，也许是心中还有一些梦想（虽然人生看上去也就那样了）。</p>
+<p>35岁了，是不是还能做点什么，一定是可以的罢。</p>
+<p>孩子你快快长大，爸爸也要加油啊。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;转眼孩子已经9个多月了，进银行工作也快一年，重拾github和blog，也许是心中还有一些梦想（虽然人生看上去也就那样了）。&lt;/p&gt;
+&lt;p&gt;35岁了，是不是还能做点什么，一定是可以的罢。&lt;/p&gt;
+&lt;p&gt;孩子你快快长大，爸爸也要加油啊。&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="thoughts" scheme="http://www.richardxu1983.com/categories/thoughts/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>UGUI的图片打包</title>
     <link href="http://www.richardxu1983.com/2017/07/28/20170728-code/"/>
     <id>http://www.richardxu1983.com/2017/07/28/20170728-code/</id>
     <published>2017-07-28T12:48:30.000Z</published>
-    <updated>2017-07-28T13:06:14.715Z</updated>
+    <updated>2017-07-28T13:06:14.716Z</updated>
     
     <content type="html"><![CDATA[<p>本文主要参考了<a href="http://www.xuanyusong.com/archives/3304" target="_blank" rel="external">UGUI研究院之全面理解图集与使用（三）</a>的讲解，感谢雨松老师</p>
 <h3 id="为什么要打包？"><a href="#为什么要打包？" class="headerlink" title="为什么要打包？"></a>为什么要打包？</h3><p>图片打包之后可以降低draw call</p>
@@ -51,7 +77,7 @@
     <link href="http://www.richardxu1983.com/2017/07/23/20170723/"/>
     <id>http://www.richardxu1983.com/2017/07/23/20170723/</id>
     <published>2017-07-23T12:58:48.000Z</published>
-    <updated>2017-07-23T13:03:29.735Z</updated>
+    <updated>2018-06-06T12:58:46.133Z</updated>
     
     <content type="html"><![CDATA[<p>还有2周娃就要出生了<br>心中有不少忐忑与担心<br>但有更多的期待与希望</p>
 <p>我未来的孩儿啊<br>爸爸有好多好多的事情要告诉你</p>
@@ -67,7 +93,7 @@
     
     </summary>
     
-      <category term="story" scheme="http://www.richardxu1983.com/categories/story/"/>
+      <category term="thoughts" scheme="http://www.richardxu1983.com/categories/thoughts/"/>
     
     
   </entry>
@@ -77,7 +103,7 @@
     <link href="http://www.richardxu1983.com/2017/07/16/blog-2017-7-16-code/"/>
     <id>http://www.richardxu1983.com/2017/07/16/blog-2017-7-16-code/</id>
     <published>2017-07-16T00:07:59.000Z</published>
-    <updated>2017-07-16T00:16:39.189Z</updated>
+    <updated>2017-07-16T00:16:39.190Z</updated>
     
     <content type="html"><![CDATA[<p>如果开发的是复古像素风格的2D游戏，那么最好要进行以下设置：</p>
 <h3 id="关闭各向异性和抗锯齿"><a href="#关闭各向异性和抗锯齿" class="headerlink" title="关闭各向异性和抗锯齿"></a>关闭各向异性和抗锯齿</h3><p>Edit-&gt;Project Settings-&gt;Quality:</p>
@@ -123,7 +149,7 @@ size = 24/x，如果x为整数，那么size=24,12,8,6....</code></p>
     <link href="http://www.richardxu1983.com/2017/07/15/blog/"/>
     <id>http://www.richardxu1983.com/2017/07/15/blog/</id>
     <published>2017-07-15T12:35:59.000Z</published>
-    <updated>2017-07-16T04:47:55.714Z</updated>
+    <updated>2018-06-06T12:58:53.498Z</updated>
     
     <content type="html"><![CDATA[<p>经过一番纠结，最终决定好好把github主页给搞起来。<br>毕竟这是最大的编程、分享（同性）网站不是么。<br>权衡再三，决定使用hexo生成静态博客页面，看看效果如何吧。</p>
 ]]></content>
@@ -135,7 +161,7 @@ size = 24/x，如果x为整数，那么size=24,12,8,6....</code></p>
     
     </summary>
     
-      <category term="story" scheme="http://www.richardxu1983.com/categories/story/"/>
+      <category term="thoughts" scheme="http://www.richardxu1983.com/categories/thoughts/"/>
     
     
   </entry>

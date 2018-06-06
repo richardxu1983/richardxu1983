@@ -3,6 +3,23 @@
   
     
     <entry>
+      <title><![CDATA[2018年已经过了一半]]></title>
+      <url>/2018/06/06/2018-06-06-somethoughts/</url>
+      <content type="html"><![CDATA[<p>转眼孩子已经9个多月了，进银行工作也快一年，重拾github和blog，也许是心中还有一些梦想（虽然人生看上去也就那样了）。</p>
+<p>35岁了，是不是还能做点什么，一定是可以的罢。</p>
+<p>孩子你快快长大，爸爸也要加油啊。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> thoughts </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[UGUI的图片打包]]></title>
       <url>/2017/07/28/20170728-code/</url>
       <content type="html"><![CDATA[<p>本文主要参考了<a href="http://www.xuanyusong.com/archives/3304" target="_blank" rel="external">UGUI研究院之全面理解图集与使用（三）</a>的讲解，感谢雨松老师</p>
@@ -40,7 +57,7 @@
       
         <categories>
             
-            <category> story </category>
+            <category> thoughts </category>
             
         </categories>
         
@@ -98,7 +115,7 @@ size = 24/x，如果x为整数，那么size=24,12,8,6....</code></p>
       
         <categories>
             
-            <category> story </category>
+            <category> thoughts </category>
             
         </categories>
         
