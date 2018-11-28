@@ -1,0 +1,2 @@
+webpackJsonp([3],{"5TNe":function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r={name:"frontPage",created:function(){document.title="小站首页"}},l={render:function(){var e=this.$createElement;return(this._self._c||e)("div",[this._v("\n\tfrontPage\n")])},staticRenderFns:[]},u=n("VU/8")(r,l,!1,null,null,null);t.default=u.exports}});
+//# sourceMappingURL=3.9452c8b53b0088a5c3ac.js.map
