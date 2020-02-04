@@ -1,0 +1,484 @@
+
+html,body
+{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-family:Consolas,"Microsoft YaHei","微软雅黑","SimSun","宋体",Menlo,Monaco,Andale Mono,lucida console,"Courier New",monospace;
+    background-color: white;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currentlynot supported by any browser */
+    overflow-x:hidden;
+}
+
+div{
+    padding: 0;
+    margin: 0;
+}
+
+.top{
+    position: relative;
+    top: 0;
+    margin: 0;
+    border-bottom: 1px solid #aaa;
+    box-shadow: 0px 0px 4px #aaa;
+    height: 40px;
+    line-height:40px;
+    padding: 0 10px 0 10px;
+    width: 100%;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    font-size: 14px;
+}
+
+.content ul{
+    margin: 0;
+}
+.content a{
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+.content hr{
+    margin: 0em 0 0em 0;
+}
+
+.content .item-cell
+{
+    line-height: 1.5em;
+    height: 1.5em;
+    margin: 0;
+    padding: 0;
+}
+
+.pad-left{
+    padding-left: 1.5em;
+}
+
+ul{
+    padding-left: 2.5em;
+}
+
+.line{
+    height: 2em;
+    line-height: 2em;
+}
+
+.bottomLine{
+    border-bottom: 1px solid #ddd;
+}
+
+.topine{
+    border-top: 1px solid #ddd;
+}
+
+.center{
+    display: block;
+    margin: 0 auto;
+}
+
+.widthFull{
+    width: 100%;
+}
+
+.halfWidth
+{
+    width: 68%;
+}
+
+.moreWidth
+{
+    width: 85%;
+}
+
+.green
+{
+    color:#00CD00;
+}
+
+.reverse-color
+{
+    background-color: black;
+    color: white;
+}
+
+.black
+{
+    color:black;
+}
+
+.fl-left
+{
+    float: left;
+}
+
+.assignPad
+{
+    height: 15em;
+}
+
+.y-scroll
+{
+    overflow-y: auto;
+}
+
+.topPad{
+    padding-top: .5em;
+}
+.topPad-big{
+    padding-top: 1em;
+}
+
+.bottomad{
+    padding-bottom: .5em;
+}
+
+.bottopad-small{
+    padding-bottom: .3em;
+}
+
+.toppad-small{
+    padding-top: .2em;
+}
+
+.bottomad-big{
+    padding-bottom: 1em;
+}
+
+.leftVoid
+{
+    padding-left: .5em;
+    padding-right: .5em;
+}
+
+.stgCard
+{
+    width: 15em;
+    height: 10em;
+    border:1px solid #666;
+    margin:1em 2em 1em 0;
+    background-color: black;
+}
+
+.stgCardTop
+{
+    height: 70%;
+    margin: 0;
+    text-align: center;
+    background-size: 100% 100%;
+}
+
+.stgCardBt
+{
+    margin: 0;
+    text-align: center;
+}
+
+.cTitle
+{
+    position: relative;
+    top:4.5em;
+    margin: 0 auto;
+    height: 2em;
+    line-height: 2em;
+    color: white;
+    background-color: black;
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    background-color: black;
+    padding: 0 1em 0 1em;
+}
+
+.cardBtn
+{
+    margin-top: .5em;
+    margin-right: 1em;
+    height: 2em;
+    line-height: 2em;
+    border-style:none;
+    border:1px solid black;
+}
+
+.cdImg
+{
+    width: 10em;
+    height: 5em;
+}
+
+.stgC
+{
+    margin: 0;
+    padding-left: 2em;
+    height: 25em;
+}
+
+.stgD
+{
+    margin: 0;
+    padding-left: 2em;
+    height: 8em;
+}
+
+.stgB
+{
+    width: 100%;
+    margin-top: 1em;
+    padding-left: 2em;
+    padding-top: .5em;
+}
+
+.stgBtn
+{
+    height: 3em;
+    line-height: 3em;
+    border: 1px solid black;
+    margin-right: 1.5em;
+    
+}
+
+.btn01
+{
+    text-align: center;
+    width:fit-content;
+    padding: 0 1em 0 1em;
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    background-color: white;
+    color: black;
+}
+
+.btn01:hover{
+    background-color: #FFEBCD;
+    cursor: pointer;
+}
+
+.btn01:active
+{
+    background-color:#FFA07A;
+    cursor: pointer;
+}
+
+.btn01:disabled
+{
+    background-color:#dddddd;
+}
+
+.shipTip{
+    width: 18em;
+    height: auto;
+    top:0;
+    left: 0;
+    position: absolute;
+    background-color: #333;
+    color:white;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 1;
+    border: 1px #aaa solid;
+}
+
+.contrast
+{
+    background-color: black;
+    color:white;   
+}
+
+.content .item-cell:hover{
+    color: #7EC0EE;
+}
+
+a:hover
+{
+    color: #8470FF;
+    cursor: pointer;
+}
+
+.underline
+{
+    border-bottom: white 1px solid;
+    font-weight: bold;
+}
+
+.fl-right
+{
+    float:right;
+}
+
+.cl
+{
+    margin: .5em;
+    padding: .5em;
+}
+
+.left,.right{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.left{
+    width: 24%;
+}
+
+.left div{
+    margin-bottom: .3em;
+}
+
+.right div{
+    margin-bottom: .3em;
+}
+
+.right{
+    width: 26%;
+}
+
+.info{
+    height: 38em;
+    overflow:auto;
+}
+
+.info .info-cell{
+    padding: .3em 0 .3em 0;
+}
+
+.info div{
+    margin: 0;
+    padding: 0;
+}
+
+.ship-info{
+    width: 95%;
+    margin: 0;
+}
+
+.mid{
+    width: 42%;
+}
+
+.box{
+    margin-top: .5em;
+    padding: .5em;
+    width: 98%;
+    height: 45em;
+    border: 1px solid black;
+    background-color: white;
+    background-color: #222;
+}
+
+.modal{
+    position: fixed;
+    top:0;
+    left:0;
+    background: rgba(0, 0, 0, 0.9) !important;/* 兼容ie几不知道，好像ie5 */
+    background:black;
+    filter:Alpha(opacity=80);
+    height: 100%;
+    width: 100%;
+    pointer-events: auto;
+}
+
+.assign-div{
+    position: absolute;
+    left:50%;
+    top:10em;
+    width: 18em;
+    background-color: #333;
+    border: solid 1px black;
+    height: auto;
+    margin-left: -10em;
+}
+
+.start_div{
+    position: absolute;
+    top:10em;
+    left: 50%;
+    margin-left: -25em;
+    width: 46em;
+    height: 27em;
+    background-color: #999;
+    text-align: center;
+    padding: 0;
+}
+
+.welcome{
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    width: 44em;
+    height: 20em;
+    border: 1px solid #333;
+    background-color: #000;
+    font-family: monospace;
+    white-space: pre;
+}
+
+.welcome_div{
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+    line-height: 5em;
+    height: 5em;
+}
+
+.m1p1
+{
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    width: 44em;
+    height: 13em;
+    border: 1px solid #333;
+    background-color: #000;
+}
+
+.m1p2
+{
+    padding: 1em;
+    margin: 0;
+    -moz-box-sizing: border-box; /*Firefox3.5+*/
+    -webkit-box-sizing: border-box; /*Safari3.2+*/
+    -o-box-sizing: border-box; /*Opera9.6*/
+    -ms-box-sizing: border-box; /*IE8*/
+    box-sizing: border-box; /*W3C标准*/
+    width: 100%;
+    height: 9em;
+    background-color: #333;
+    text-align: left;
+}
+
+.m1p3
+{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+    background-color: #222;
+}
+
+.list-enter-active, .list-leave-active {
+transition: all 0.6s;
+}
+
+.list-leave-to
+/* .list-leave-active for below version 2.1.8 */ {
+opacity: 0;
+transform: scale(0.2) rotate(90deg) translateY(-80px);
+}
+
+.list-enter
+/* .list-leave-active for below version 2.1.8 */ {
+opacity: 0;
+transform: scale(0.1);
+}

@@ -1,1 +1,295 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet type=text/css href=https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.css><script src=https://cdn.bootcss.com/axios/0.18.0/axios.min.js></script><script src=https://cdn.bootcss.com/marked/0.4.0/marked.min.js></script><title>小破站</title><link href=/static/css/app.971b6dcdb5b39cf0e21253bcb7c37337.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.a3dfd094accd5eda4e63.js></script><script type=text/javascript src=/static/js/vendor.cdf2185dc8637ec1ab0f.js></script><script type=text/javascript src=/static/js/app.11f5bf22c374a244f1eb.js></script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.css">
+	<script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+	<script src="https://cdn.bootcss.com/marked/0.4.0/marked.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/tween.js@16.3.4"></script>
+	<link rel="stylesheet" type="text/css" href="src/css/style.css">
+	<script>
+		// PC端 移动端 跳转
+		var is_mobi = navigator.userAgent.toLowerCase().match(/(ipod|iphone|android|coolpad|mmp|smartphone|midp|wap|xoom|symbian|j2me|blackberry|wince)/i) != null;
+		if (is_mobi) {
+			window.location.href = "mobile.html";
+		}
+	</script>
+	<title>小破站</title>
+</head>
+<body>
+	<div class="top">
+		<div class="pageTitle">星际漫游者</div>
+	</div>
+	<div id="app" class="content contrast">
+		<div v-if="player!=-1" class="left cl">
+			<div class="item-cell moreWidth"><b>舰长：{{player.name}}</b></div>
+			<div>星际币：<animated-integer v-bind:value="player.gold"></animated-integer></div>
+			<br>
+			<div>
+				<div>
+					<div class="ship-info item-cell">
+							<span class="moreWidth fl-left" @mouseenter="onmouseover('ship',$event,0)" @mouseleave="onmouseleave('ship',$event)">
+								<b>{{playerShip.name}}</b>
+								（{{playerShip.lvl}}级）
+							</span>
+							<a v-if="shipInfo==false" class="fl-right" @click="switchMainShipInfo">▽展开</a>
+							<a v-if="shipInfo==true" class="fl-right" @click="switchMainShipInfo">△收起</a>
+						</div>
+						<div >[ 结构:<animated-integer :value="playerShip.strc"></animated-integer>/{{playerShip.maxStrc}},
+							护盾:<animated-integer :value="playerShip.shd"></animated-integer>/{{playerShip.maxShd}}，
+							电量:<animated-integer :value="playerShip.cost-playerShip.curCost()"></animated-integer>]
+						</div>
+						<div class="ship-info" v-if="shipInfo==true">
+							<div v-if="playerShip.wpNum>0">
+								<span>武器</span>
+								<div v-for="wp in playerShip.wp" class="item-cell" v-if="wp.open==true">
+									<span class="halfWidth pad-left fl-left" @mouseenter="onmouseover('wp',$event,wp.idx)" @mouseleave="onmouseleave('wp',$event)">{{wp.posName}}：{{wp.name}}
+										<span v-if="wp.staff!=-1">({{player.staff[wp.staff].name}})</span>
+									</span>
+									<a v-if="wp.id!=-1" class="fl-right" @click="unloadWp(wp.idx)" title="卸载这个武器">[卸载]</a>
+									<a v-if="wp.staff==-1&&player.validStaff(wp.stfTp)>=0" class="fl-right" @click="assign('wp',wp.idx,wp.stfTp)" :title="assignTip(wp.stfTp)">[指派]</a>
+								</div>
+							</div>
+							<div v-if="playerShip.mdNum>0">
+								<span>挂件</span>
+								<div v-for="md in playerShip.md" class=item-cell v-if="md.open==true">
+									<span class="halfWidth pad-left fl-left" @mouseenter="onmouseover('md',$event,md.idx)" @mouseleave="onmouseleave('md',$event)">挂件{{md.idx+1}}：{{md.name}}
+										<span v-if="md.staff!=-1">({{player.staff[md.staff].name}})</span>
+									</span>
+									<a v-if="md.id!=-1" class="fl-right" @click="unloadMd(md.idx)" title="卸载这个模块">[卸载]</a>
+									<a v-if="md.staff==-1&&player.validStaff(md.stfTp)>=0" class="fl-right" @click="assign('md',md.idx,md.stfTp)" :title="assignTip(md.stfTp)">[指派]</a>
+								</div>
+							</div>
+						</div>
+				</div>
+
+				<br>
+				<br>
+				<div class="ship-info">
+					<div class=item-cell>
+						<span>宇航员({{player.staffNum}}/{{player.maxStaff}})</span>
+						<a v-if="staffInfo==false" class="fl-right" @click="switchStaffInfo">▽展开</a>
+						<a v-if="staffInfo==true" class="fl-right" @click="switchStaffInfo">△收起</a>
+					</div>
+					<div v-if="staffInfo==true">
+						<div class="item-cell" v-for="staff in player.staff" v-if="staff.id!=-1">
+							<span class="moreWidth fl-left" @mouseenter="onmouseover('staff',$event,staff.idx)" @mouseleave="onmouseleave('staff',$event)">
+								&emsp;[{{CAREER[staff.career]}}]&emsp;{{staff.name}}<span v-if="staff.jobType!=-1">（{{jobDesc(staff.idx)}}）</span>
+							</span>
+							<a v-if="staff.jobType!=-1" class="fl-right" @click="deAssign(staff.idx)" title="取消指派">[调回]</a>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div v-if="playerShip.store>0">
+					<div class="ship-info">
+						货柜仓（{{playerShip.roomOccupy}}/{{playerShip.store}}）
+					</div>
+					<div class="ship-info">
+						<div v-for="item in plyStore" v-if="item!=undefined&&item.id>=0">
+							<div class=item-cell>
+								<span class="moreWidth fl-left" @mouseenter="onmouseover('item',$event,item.idx)" @mouseleave="onmouseleave('item',$event)">
+									&emsp;[{{typeStr[ITEM_DATA[item.id].type]}}]&emsp;{{item.name}}({{item.num}})
+								</span>
+								<a v-if="ITEM_DATA[item.id].type==100" class="fl-right" @click="tryToLoadWp(item.idx)" title="安装这个武器">[装载]</a>
+								<a v-if="ITEM_DATA[item.id].type==101" class="fl-right" @click="tryToLoadMd(item.idx)" title="安装这个模块">[装载]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div v-if="player!=-1" class="mid cl">
+			<div>
+				<a v-for="(v,index) in midModule" :class="minNavClass(index)" @click="minNavClick(index)">{{v.name}}</a>
+			</div>
+			<div class="box">
+				<div v-if="midModuleCur=='test'">
+					<button @click="fight">随机战斗</button>
+					<button @click="testAddStaff">添加船员</button>
+					<button @click="testAddHour">增加时间</button>
+					<button @click="testAddwpOpen">增加武器位置</button>
+					<button @click="testAddmdOpen">增加模块位置</button>
+					<button @click="testAddLv">船升级</button>
+				</div>
+				<div v-if="midModuleCur=='adv'">
+					<div class="stgD" v-if="stage.lv!=-1">
+						<h3>{{stage.name}}</h3>
+						<p>{{TASK_DATA[stage.task].name}}</p>
+						<p>剩余{{stage.dayLeft}}天</p>
+					</div>
+					<div class="topPad-big stgC" v-if="stage.lv!=-1">
+						<transition-group @after-leave="getAllStg()" name="list">
+							<div v-for="(v,index) in stg" :key="index" v-if="v.type!=-1" class="stgCard fl-left">
+								<div class="stgCardTop" v-bind:style="{backgroundImage:'url(static/img/'+v.src+'.png)'}">
+									<div class="cTitle">{{v.name}}<span v-if="v.type==2">({{v.mine}})</span></div>
+								</div>
+								<hr>
+								<div class="stgCardBt">
+									<button class="btn01 cardBtn" v-for="(v1,index) in v.choice" @click="doStg(v.idx,index)">{{v1}}</button>
+								</div>
+							</div>
+						</transition-group>
+					</div>
+					<hr>
+					<div class="stgB">
+						<div class="stgBtn btn01 fl-left" title="你可以在这里维修和升级你的舰船">银河联邦星港</div>
+						<div class="stgBtn btn01 fl-left" title="你可以在这里招募一些帮手">星港酒馆</div>
+						<div class="stgBtn btn01 fl-left" title="你可以在这里买卖一些物品">联邦交易中心</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div v-if="player!=-1" class="right cl">
+			<div>{{timeS}}</div>
+			<a :class="{underline:rightSel==1}" @click="clickRightMenu(1)">船长日志</a>|<a :class="{underline:rightSel==2}" @click="clickRightMenu(2)">查看战斗记录</a>
+			<br><br>
+			<hr>
+			<br>
+			<div id="info" class="info" v-if="rightSel==1">
+				<div class="info-cell" v-for="item in msg" v-html="item">&emsp;{{item}}</div>
+			</div>
+			<div id="info" class="info" v-if="rightSel==2">
+				<div class="info-cell" v-for="item in ftMsg" v-html="item">&emsp;{{item}}</div>
+			</div>
+		</div>
+		<div v-if="modal" class="modal">
+			<div class="assign-div topPad leftVoid" id="assign-div" v-if="assignDiv">
+				<div class="bottomad bottomLine">可指派的宇航员({{player.ctVldStf(stfTp)}})</div>
+				<div class="topPad" v-if="player.ctVldStf(stfTp)<=0">没有人可以指派</div>
+				<div class="topPad bottomad y-scroll assignPad">
+					<div v-for="staff in player.staff" v-if="staff.id!=-1&&staff.jobType==-1&&staff.career==stfTp">
+						<div>
+							<span class="halfWidth line fl-left" @mouseenter="onmouseover('staff',$event,staff.idx)" @mouseleave="onmouseleave('staff',$event)">
+							{{staff.name}}
+							</span>
+							<a class="fl-right" @click="assignStaff(staff.idx)" title="指派该宇航员">[指派]</a>
+						</div>
+					</div>
+				</div>
+				<div class="topine topPad-big bottomad widthFull"><button class="center" @click="closeAssign">关闭</button></div>
+			</div>
+			<div v-if="modal_1" class="start_div">
+				<div v-if="start" class="welcome">
+
++       *
+                                                  +
++	           				                                    *
+  _____ _______       _____           _____   ______      ________ _____  
+ / ____|__   __|/\   |  __ \         |  __ \ / __ \ \    / /  ____|  __ \ 
+| (___    | |  /  \  | |__) |        | |__) | |  | \ \  / /| |__  | |__) |
+ \___ \   | | / /\ \ |  _  /         |  _  /| |  | |\ \/ / |  __| |  _  / 
+ ____) |  | |/ ____ \| | \ \         | | \ \| |__| | \  /  | |____| | \ \ 
+|_____/   |_/_/    \_\_|  \_\        |_|  \_\\____/   \/   |______|_|  \_\
+
+ +                                                                +
+           +           +                               *
++
+				</div>
+				<div v-if="start" class="welcome_div">
+					<a title="start the damn JOURNEY!!" @click="onStart()">start!</a>
+				</div>
+				<div v-if="gameFail" class="m1p1"></div>
+				<div v-if="gameFail" class="m1p2">asdasd</div>
+				<div v-if="gameFail" class="m1p3">
+					<a  @click="onStart()">To be continue...</a>
+				</div>
+			</div>
+		</div>
+		<div v-if="player!=-1" class="shipTip topPad leftVoid" id="staffTip" v-show="staffTip">
+			<div v-if="staffTip">
+				<div class="bottomLine bottomad">
+					<div><b>{{player.staff[staffTipIdx].name}}</b></div>
+					<span>
+						{{SPECIES[player.staff[staffTipIdx].species]}}，
+						{{CAREER[player.staff[staffTipIdx].career]}}，
+						{{GENDER[player.staff[staffTipIdx].gender]}}，
+						{{player.staff[staffTipIdx].age}}岁
+					</span>
+				</div>
+				<div class="bottomad">
+					<div class="toppad-small">加入时间：第{{player.staff[staffTipIdx].week}}周，第{{player.staff[staffTipIdx].day}}天</div>
+					<div class="toppad-small">周薪：{{player.staff[staffTipIdx].salary}}星际币</div>
+				</div>
+			</div>
+		</div>
+		<div v-if="player!=-1" class="shipTip" id="shipTip" v-show="shipTip">
+			<div class="line bottomLine leftVoid"><b>{{playerShip.name}}</b></div>
+			<div class="leftVoid bottomad topPad">
+				<div>最大电量：{{playerShip.cost}}（+{{playerShip.lvlup.cost}}每级）</div>
+				<div>最大等级：{{playerShip.maxLvl}}</div>
+				<div>战斗护盾回冲：<span :class="shipBetter('shdBtRec',1)?'green':'white'">{{playerShip.shdBtRec}}</span>点（每{{Math.floor(BT_SHLD_RECT/1000)}}秒）</div>
+				<div>一般护盾回冲：<span :class="shipBetter('shdRec',1)?'green':'white'">{{playerShip.shdRec}}</span>点（每天）</div>
+				<div>武器位：{{playerShip.wpNum}}个（已开启：{{playerShip.wpOpen}}个）</div>
+				<div>模块：{{playerShip.mdNum}}个（已开启：{{playerShip.mdOpen}}个）</div>
+			</div>
+		</div>
+		<div v-if="player!=-1" class="shipTip" id="wpTip" v-show="wpTip">
+			<div class="leftVoid bottomLine bottomad topPad" v-if="wpTipIdx>=0&&playerShip.wp[wpTipIdx].id>=0">
+				<div ><b>{{playerShip.wp[wpTipIdx].name}}</b></div>
+				<div v-if="playerShip.wp[wpTipIdx].staff==-1">操作员：无（需要一位[{{CAREER[playerShip.wp[wpTipIdx].stfTp]}}]操作）<br><i>该武器当前处于自动状态</i></div>
+				<div v-if="playerShip.wp[wpTipIdx].staff!=-1">操作员：{{player.staff[playerShip.wp[wpTipIdx].staff].name}}</div>
+			</div>
+			<div class="leftVoid bottomLine topPad" v-if="wpTipIdx>=0&&playerShip.wp[wpTipIdx].id==-1">
+				<div >目前没有装载武器</div>
+				<div v-if="playerShip.wp[wpTipIdx].staff==-1">操作员：无（需要一位[{{CAREER[playerShip.wp[wpTipIdx].stfTp]}}]操作）<br></div>
+				<div v-if="playerShip.wp[wpTipIdx].staff!=-1">操作员：{{player.staff[playerShip.wp[wpTipIdx].staff].name}}</div>
+			</div>
+			<div class="leftVoid bottomad topPad" v-if="wpTipIdx>=0&&playerShip.wp[wpTipIdx].id>=0">
+				类型：{{wpTypeStrByItm([playerShip.wp[wpTipIdx].id])}}
+				<br>
+				用电：{{itemCost(playerShip.wp[wpTipIdx].id)}}
+				<br>
+				伤害：<span :class="wpBetter('atk',wpTipIdx)?'green':'white'">{{wpTipDmg}}</span>
+				<br>
+				速度：{{parseFloat((wpTipSpeed/1000).toFixed(2))}}秒（每次）
+				<br>
+				装填时间：{{parseFloat((wpTipIT/1000).toFixed(2))}}秒（首次）
+				<br>
+				命中率：<span :class="wpBetter('aim',wpTipIdx)?'green':'white'">{{wpAim}} </span>%
+			</div>
+		</div>
+		<div v-if="player!=-1" class="shipTip" id="mdTip" v-show="mdTip">
+			<div class="leftVoid bottomLine bottomad topPad" v-if="mdTipIdx>=0&&playerShip.md[mdTipIdx].id>=0">
+				<div ><b>{{playerShip.md[mdTipIdx].name}}</b></div>
+				<div v-if="playerShip.md[mdTipIdx].staff==-1">操作员：无<br>（需要一位[{{CAREER[playerShip.md[mdTipIdx].stfTp]}}]操作）<br></div>
+				<div v-if="playerShip.md[mdTipIdx].staff!=-1">操作员：{{player.staff[playerShip.md[mdTipIdx].staff].name}}</div>
+				<i>{{itemDesc(playerShip.md[mdTipIdx].id)}}</i>
+			</div>
+			<div class="leftVoid bottomLine topPad" v-if="mdTipIdx>=0&&playerShip.md[mdTipIdx].id==-1">
+				<div >这个位置没有安装模块</div>
+				<div v-if="playerShip.md[mdTipIdx].staff==-1">操作员：无<br>（需要一位[{{CAREER[playerShip.md[mdTipIdx].stfTp]}}]操作）<br></div>
+				<div v-if="playerShip.md[mdTipIdx].staff!=-1">操作员：{{player.staff[playerShip.md[mdTipIdx].staff].name}}</div>
+			</div>
+			<div class="leftVoid bottomLine topPad" v-if="mdTipIdx>=0&&playerShip.md[mdTipIdx].id>=0">
+				用电：{{itemCost(playerShip.wp[mdTipIdx].id)}}
+			</div>
+		</div>
+		<div v-if="player!=-1" class="shipTip" id="itemTip" v-show="itemTip">
+			<div class="leftVoid bottomLine bottomad topPad" v-if="itemTipIdx>=0&&playerShip.room[itemTipIdx]!=undefined&&playerShip.room[itemTipIdx].id!=-1">
+				<div ><b>{{ITEM_DATA[playerShip.room[itemTipIdx].id].name}}</b></div>
+				<i>{{itemDesc(playerShip.room[itemTipIdx].id)}}</i>
+			</div>
+			<div class="leftVoid bottomLine topPad" v-if="itemTipIdx>=0&&playerShip.room[itemTipIdx]!=undefined&&playerShip.room[itemTipIdx].id!=-1">
+				类型：{{itemType(playerShip.room[itemTipIdx].id)}}
+				<br>
+				用电：{{itemCost(playerShip.room[itemTipIdx].id)}}
+			</div>
+		</div>
+	</div>
+</body>
+<script src="src/js/data.js"></script>
+<script src="src/js/stage.js"></script>
+<script src="src/js/info.js"></script>
+<script src="src/js/time.js"></script>
+<script src="src/js/item.js"></script>
+<script src="src/js/starRover.js"></script>
+<script src="src/js/captain.js"></script>
+<script src="src/js/staff.js"></script>
+<script src="src/js/game.js"></script>
+<script src="src/js/roverVue.js"></script>
+</html>
